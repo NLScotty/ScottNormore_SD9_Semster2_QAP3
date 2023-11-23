@@ -1,28 +1,30 @@
 import { useState, useEffect } from "react";
 import './App.css';
-import List from "./components/List"
+import DogList from "./components/DogList"
 
 function App() {
-  async function fetchData(){
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts')
+  async function fetchDogs(){
+    const response = await fetch('https://dog.ceo/api/breeds/list/all')
     const data = await response.json()
     setList(data)
   }
 
+  async function fetchImages(breed, number){
+    const response = await fetch(`https://dog.ceo/api/breed/${breed}/images/random/${number}`)
+    const data = await response.json()
+    setImages(data)
+  }
+
   useEffect(() =>{
-    fetchData()
+    fetchDogs()
   },[])
 
-  const [listItems, setList] = useState([])
-
-  //fetchData()
-
-  console.log(listItems)
-
+  const [dogList, setList] = useState([])
+  const [dogImages, setImages] = useState([])
+  
   return (
     <div className="App">
-      <h1>TO DO LIST</h1>
-      <List data = {listItems}/>
+      <DogList data = {dogList.length !== 0 ? Object.keys(dogList.message) : []}/>
     </div>
   );
 }
