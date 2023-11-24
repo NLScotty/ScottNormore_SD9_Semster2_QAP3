@@ -1,3 +1,1 @@
-Submission for practice assignment assigned november 20
-
-I missed the last practice assignment, so I mostly focused on getting the information to display on page from a fetch request (very bare bones looking). I use the useEffect function to call the fetch API only once, then I use the data I receive from it as the state. Using the state hook, it detects a change in state and renders the information in a list format.
+Submission for QAP 3
