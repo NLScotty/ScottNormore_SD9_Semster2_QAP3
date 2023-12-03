@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import './App.css';
 import DogList from "./components/DogList"
 import DogGallery from "./components/DogGallery"
+import Header from './components/Header'
 
 function App() {
   const [dogList, setList] = useState([])
@@ -26,10 +27,13 @@ function App() {
   console.log(dogImages)
 
   return (
-    <div className="App">
-      <DogList data = {dogList.length !== 0 ? Object.keys(dogList.message) : []} func = {fetchImages}/>
-      <DogGallery data = {dogImages.length !== 0 ? dogImages.message : []}/>
-    </div>
+    <>
+      <Header/>
+      <div className="Content">
+        <DogList data = {dogList.length !== 0 ? Object.keys(dogList.message) : []} func = {fetchImages}/>
+        <DogGallery data = {dogImages.length !== 0 ? dogImages.message : []}/>
+      </div>
+    </>
   );
 }
 
