@@ -15,6 +15,11 @@ function App() {
   }
 
   async function fetchImages(breed, number){
+    console.log(number)
+    if(number === null || number === ''){
+      setImages([]);
+      return;
+    }
     const response = await fetch(`https://dog.ceo/api/breed/${breed}/images/random/${number}`)
     const data = await response.json()
     setImages(data)
